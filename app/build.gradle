@@ -16,6 +16,19 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        if (project.rootProject.file('local.properties').exists()) {
+            properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        }
+
+        // 2. Crear la variable para usar en Java (obtiene el valor de local.properties)
+        buildConfigField "String", "ACCESS_KEY_ID", properties.getProperty("accessKeyID", "\"\"")
+        buildConfigField "String", "ACCESS_KEY_SECRET", properties.getProperty("accessKeySecret", "\"\"")
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {

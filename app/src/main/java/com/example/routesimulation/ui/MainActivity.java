@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+
+import com.example.routesimulation.BuildConfig;
 import com.here.sdk.core.GeoCoordinates;
 import com.here.sdk.core.engine.AuthenticationMode;
 import com.here.sdk.core.engine.SDKNativeEngine;
@@ -267,8 +269,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeHERESDK() {
         // Set your credentials for the HERE SDK.
-        String accessKeyID = "sSAF4XJSCpTkyINckWoPKg";
-        String accessKeySecret = "ZXq9ob3Cv1h_4WSvFgu3tIOMfUYSK-SRnka9rKMRhevL7V9UGBhn-gu14-pOvQlJ5nBNp1Z4LdRWv7nZ79ww2g";
+        String accessKeyID = BuildConfig.ACCESS_KEY_ID;
+        String accessKeySecret = BuildConfig.ACCESS_KEY_SECRET;
         AuthenticationMode authenticationMode = AuthenticationMode.withKeySecret(accessKeyID, accessKeySecret);
         SDKOptions options = new SDKOptions(authenticationMode);
         try {
